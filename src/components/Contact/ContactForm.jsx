@@ -1,0 +1,63 @@
+import { Suspense, useRef, lazy } from "react";
+const Meteors = lazy(() => import("./Meteors"));
+
+export function ContactForm() {
+  const form = useRef()
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+
+    try {
+      const emailjs = await import("@emailjs/browser");
+      const apiEmailService = import.meta.env.VITE_EMAIL_SERVICE;
+      const apiEmailTemplate = import.meta.env.VITE_EMAIL_TEMPLATE;
+      const apiEmailKey = import.meta.env.VITE_EMAIL_KEY;
+
+      await emailjs.sendForm(apiEmailService, apiEmailTemplate, form.current, apiEmailKey);
+
+      const Swal = (await import("sweetalert2")).default;
+      Swal.fire({
+        title: "Success",
+        icon: 'success',
+        confirmButtonText: 'OK',
+        allowOutsideClick: false
+      });
+      form.current.reset();
+    } catch (error) {
+      console.error("Failed to send email", error);
+
+      const Swal = (await import("sweetalert2")).default;
+      Swal.fire({
+        title: "Error",
+        icon: 'error',
+        confirmButtonText: 'OK',
+        allowOutsideClick: false
+      });
+    }
+  };
+
+  return (
+    <div className="relative w-full mx-auto z-10">
+      <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-customColor2 to-customColor6 transform scale-[0.80] rounded-full blur-3xl" />
+      <div className="relative shadow-xl bg-customColor1 border border-customColor3 px-4 py-8 h-full overflow-hidden rounded-2xl flex flex-col justify-end items-start">
+        <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4 text-customColor4 w-full">
+          <label htmlFor="name">Name:</label>
+          <input className="bg-transparent rounded-md border border-slate-800 p-4" name="name" type="text" id="name" placeholder="Jhon Doe" />
+          <label htmlFor="email">Email:</label>
+          <input className="bg-transparent rounded-md border border-slate-800 p-4" name="email" type="email" id="email" placeholder="email@example.com" />
+          <label htmlFor="message">Message:</label>
+          <textarea className="bg-transparent rounded-md border border-slate-800 p-4" name="message" id="message" cols="30" rows="4"></textarea>
+
+          <button type="submit" className="inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-transparent bg-[length:200%_100%] px-6 font-medium text-customColor4 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+            Send
+          </button>
+        </form>
+        <Suspense fallback={null}>
+          <Meteors />
+        </Suspense>
+      </div>
+    </div>
+  );
+}
+
+export default ContactForm;
