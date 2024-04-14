@@ -1,6 +1,8 @@
 import { CiLinkedin } from "react-icons/ci"
 import { BiLogoGithub } from "react-icons/bi";
-import { ArrowButtonUp } from "./ArrowButtonUp";
+import { Suspense, lazy } from "react";
+
+const ArrowButtonUp = lazy(() => import("./ArrowButtonUp"))
 
 const Footer = () => {
     return (
@@ -10,7 +12,9 @@ const Footer = () => {
                 <a href="https://www.linkedin.com/in/benjamin-martin-paredes-brain/" target="_blank" aria-label="LinkedIn"><CiLinkedin /></a>
                 <a href="https://github.com/Benjamin-Paredes-Brain" target="_blank" aria-label="GitHub"><BiLogoGithub /></a>
             </div>
-            <ArrowButtonUp />
+            <Suspense fallback={null}>
+                <ArrowButtonUp />
+            </Suspense>
         </footer>
     )
 }

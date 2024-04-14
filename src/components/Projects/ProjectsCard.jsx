@@ -16,7 +16,7 @@ function ProjectsCard() {
 
     return (
         <div>
-            <BackgroundGradient className="rounded-[22px] max-w-sm p-8 bg-gradient-to-b from-customColor1 to-black">
+            <BackgroundGradient className="rounded-[22px] max-w-sm p-8 bg-gradient-to-bl from-customColor2 to-customColor1">
                 {
                     projects.map((project, index) => (
                         <div key={index} className="flex flex-col gap-2">
@@ -24,7 +24,7 @@ function ProjectsCard() {
                             <p className="text-xl text-black mt-4 mb-2 dark:text-neutral-200">{project.title}</p>
                             <p className="text-md text-customColor5">{project.description}</p>
                             <a href={project.url} className="relative inline-flex h-12 overflow-hidden rounded-2xl p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-                                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+                                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#160e2b_50%,#E2CBFF_100%)]" />
                                 <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-2xl bg-customColor1 px-3 py-1 text-md gap-2 font-medium text-customColor4 backdrop-blur-3xl">
                                     Website <GiUfo />
                                 </span>

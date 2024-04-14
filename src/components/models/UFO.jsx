@@ -91,16 +91,18 @@ const UFO = (props) => {
 
     useEffect(() => {
         const canvas = gl.domElement;
-        canvas.addEventListener("pointerdown", handlePointerDown);
-        canvas.addEventListener("pointerup", handlePointerUp);
-        canvas.addEventListener("pointermove", handlePointerMove);
-        window.addEventListener("keydown", handleKeyDown);
-        window.addEventListener("keyup", handleKeyUp);
-        canvas.addEventListener("touchstart", handleTouchStart);
-        canvas.addEventListener("touchend", handleTouchEnd);
-        canvas.addEventListener("touchmove", handleTouchMove);
-
+    
+        canvas.addEventListener("pointerdown", handlePointerDown, { passive: true });
+        canvas.addEventListener("pointerup", handlePointerUp, { passive: true });
+        canvas.addEventListener("pointermove", handlePointerMove, { passive: true });
+        window.addEventListener("keydown", handleKeyDown, { passive: true });
+        window.addEventListener("keyup", handleKeyUp, { passive: true });
+        canvas.addEventListener("touchstart", handleTouchStart, { passive: true });
+        canvas.addEventListener("touchend", handleTouchEnd, { passive: true });
+        canvas.addEventListener("touchmove", handleTouchMove, { passive: true });
+    
         return () => {
+
             canvas.removeEventListener("pointerdown", handlePointerDown);
             canvas.removeEventListener("pointerup", handlePointerUp);
             canvas.removeEventListener("pointermove", handlePointerMove);
@@ -111,6 +113,7 @@ const UFO = (props) => {
             canvas.removeEventListener("touchmove", handleTouchMove);
         };
     }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
+    
 
     useFrame(() => {
         if (!isRotating) {

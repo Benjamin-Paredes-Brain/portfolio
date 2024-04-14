@@ -7,7 +7,7 @@ const StarsCanvas = lazy(() => import("../models/Stars"))
 const Home = () => {
   return (
     <section id="home" className="h-screen flex flex-col justify-center items-center">
-      <h1 className="text-stroke text-3xl uppercase text-balance text-center xl:text-4xl" rel="preload">Benjamín Martin Paredes Brain</h1>
+      <h1 className="text-stroke text-3xl uppercase text-balance text-center xl:text-4xl">Benjamín Martin Paredes Brain</h1>
       <h2 className="text-customColor5 text-balance text-center text-lg mt-3 xl:text-xl">+1 year experience. Fullstack MERN Developer. From Córdoba, Argentina.</h2>
 
       <div className="flex items-center justify-center gap-10 text-customColor2 z-30 text-5xl my-2 lg:my-4">

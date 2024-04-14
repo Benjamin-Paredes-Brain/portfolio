@@ -33,7 +33,7 @@ const CardsGrid = ({ items }) => {
           </AnimatePresence>
 
           <div className={cn("flex flex-col items-center justify-center rounded-2xl h-full w-full p-4 overflow-hidden bg-transparent border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-0")}>
-            <div className="text-5xl md:text-6xl lg:text-7xl"><item.icon style={{ color: item.color }} /></div>
+            <div className="text-5xl md:text-6xl lg:text-7xl"><item.icon loading="lazy" style={{ color: item.color }} /></div>
             <p className={cn("mt-8 text-zinc-400 tracking-wide leading-relaxed text-lg md:text-xl lg:text-2xl")}>
               {item.title}
             </p>

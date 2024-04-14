@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa";
 
-export const ArrowButtonUp = () => {
+const ArrowButtonUp = () => {
   const [up, setUp] = useState(false)
 
   const hanldeUp = () => {
@@ -41,3 +41,5 @@ export const ArrowButtonUp = () => {
     </div>
   );
 };
+
+export default ArrowButtonUp;

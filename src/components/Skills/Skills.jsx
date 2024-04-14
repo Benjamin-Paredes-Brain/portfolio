@@ -1,8 +1,10 @@
+import { lazy, Suspense } from "react";
 import { FaHtml5, FaCss3, FaJs, FaSass, FaReact, FaNode, FaGitAlt, FaGithub } from "react-icons/fa";
 import { DiMongodb } from "react-icons/di";
 import { SiExpress, SiHandlebarsdotjs, SiTailwindcss } from "react-icons/si";
 import CardsGrid from "./CardsGrid";
-import Spotlight from "./SpotLight";
+
+const Spotlight = lazy(() => import("./SpotLight"))
 
 const Skills = () => {
 
@@ -24,8 +26,10 @@ const Skills = () => {
     return (
         <section id="skills" className="section-separation">
             <h2 className='text-stroke title'>SKILLS</h2>
-            <Spotlight />
             <CardsGrid items={items} />
+            <Suspense fallback={null}>
+                <Spotlight />
+            </Suspense>
         </section >
     )
 }
