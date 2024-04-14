@@ -11,7 +11,7 @@ const About = () => {
                         <p>In the other hand, I enjoy nurturing my mind through books, exploring new worlds by reading and acquiring knowledge. In addition, I'm passionate about well-being and health. You'll regularly find me at the gym, working on my mind and body.</p>
                     </div>
                 </div>
-                <span><img loading="lazy" className='shadow-img object-cover mx-auto h-64 lg:h-80' src="/img/web/avatar.webp" alt="Avatar-Benjamin_Paredes" /></span>
+                <span><img loading="lazy" className='shadow-img object-cover mx-auto w-64 h-64 lg:h-80' src="/img/web/avatar.webp" alt="Avatar-Benjamin_Paredes" /></span>
             </div>
         </section>
     )

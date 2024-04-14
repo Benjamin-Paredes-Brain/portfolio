@@ -1,12 +1,12 @@
-import React from "react";
-import StarsCanvas from "../models/Stars"
+import { lazy, Suspense } from "react";
 import { CiLinkedin } from "react-icons/ci"
 import { BiLogoGithub } from "react-icons/bi";
+
+const StarsCanvas = lazy(() => import("../models/Stars"))
 
 const Home = () => {
   return (
     <section id="home" className="h-screen flex flex-col justify-center items-center">
-      <StarsCanvas />
       <h1 className="text-stroke text-3xl uppercase text-balance text-center xl:text-4xl" rel="preload">Benjamín Martin Paredes Brain</h1>
       <h2 className="text-customColor5 text-balance text-center text-lg mt-3 xl:text-xl">+1 year experience. Fullstack MERN Developer. From Córdoba, Argentina.</h2>
 
@@ -14,6 +14,9 @@ const Home = () => {
         <a href="https://www.linkedin.com/in/benjamin-martin-paredes-brain/" target="_blank" aria-label="LinkedIn"><CiLinkedin /></a>
         <a href="https://github.com/Benjamin-Paredes-Brain" target="_blank" aria-label="GitHub"><BiLogoGithub /></a>
       </div>
+      <Suspense fallback={null}>
+        <StarsCanvas />
+      </Suspense>
     </section>
   );
 };
